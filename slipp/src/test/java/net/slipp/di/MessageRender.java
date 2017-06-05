@@ -5,15 +5,25 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MessageRender {
 
+	private MessageProvider messageProvider;
+	
+	public void setMessageProvider(MessageProvider messageProvider) {
+		this.messageProvider = messageProvider;
+	}
+	
 	public void render(){
-		MessageProvider mp = new HelloWorldMessageProvider();
-		System.out.println(mp.getMessage());
+		System.out.println(messageProvider.getMessage());
 	}
 	
 	public static void main(String[] args) {
 
 		MessageRender render = new MessageRender();
+		render.setMessageProvider(new HelloWorldMessageProvider());
 		render.render();
+		
+		render.setMessageProvider(new HiWorldMessageProvider());
+		render.render();
+		
 	}
 	
 }
