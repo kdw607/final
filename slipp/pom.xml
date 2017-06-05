@@ -5,7 +5,15 @@
 	<artifactId>slipp</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
-
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.5.RELEASE</version>
+		</dependency>
+	</dependencies>
+	
 	<build>
 		<finalName>slipp</finalName>
 		<plugins>
