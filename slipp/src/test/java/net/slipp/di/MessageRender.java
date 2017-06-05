@@ -16,14 +16,9 @@ public class MessageRender {
 	}
 	
 	public static void main(String[] args) {
-
-		MessageRender render = new MessageRender();
-		render.setMessageProvider(new HelloWorldMessageProvider());
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:di.xml");
+		MessageRender render = (MessageRender)ctx.getBean("messageRender");
 		render.render();
-		
-		render.setMessageProvider(new HiWorldMessageProvider());
-		render.render();
-		
 	}
 	
 }
