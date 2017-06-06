@@ -1,6 +1,8 @@
 package net.slipp.dao.users;
 
 import net.slipp.domain.users.User;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +32,6 @@ public class UserDaoTest {
 		User user = new User("sanjigi", "password", "»êÁö±â", "sanjigi@gmail.com");
 		userDao.create(user);
 		User dbUser = userDao.findById(user.getUserId());
-		
+		assertThat(dbUser, is(user));
 	}
-
 }
