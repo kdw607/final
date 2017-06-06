@@ -1,10 +1,21 @@
 package net.slipp.domain.users;
 
-public class User {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.Email;
+
+import com.sun.istack.internal.NotNull;
+
+public class User {
+	
+	@NotNull @Min(4) @Max(12)
 	private String userId;
+	@NotNull @Min(4) @Max(12)
 	private String password;
+	@NotNull
 	private String name;
+	@Email
 	private String email;
 	
 	public User(String userId, String password, String name, String email) { 
