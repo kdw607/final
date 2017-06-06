@@ -17,8 +17,6 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 public class UserDao extends JdbcDaoSupport{
 
-	
-	
 	private static final Logger log = LoggerFactory.getLogger(UserDao.class);
 	
 	@PostConstruct
@@ -46,7 +44,7 @@ public class UserDao extends JdbcDaoSupport{
 		return getJdbcTemplate().queryForObject(sql, rowMapper, userId);
 	}
 
-	public void create(User user) {
+	public void create(User user){
 		String sql = "insert into users values(?, ?, ?, ?)";
 		getJdbcTemplate().update(sql,
 						user.getUserId(),

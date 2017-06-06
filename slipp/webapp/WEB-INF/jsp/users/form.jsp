@@ -20,7 +20,7 @@
 					<h1>회원가입</h1>
 				</div>
 
-				<form:form cssClass="form-horizontal" action="/users" method="post">
+				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="post">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
