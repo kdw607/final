@@ -34,6 +34,12 @@
     <dependent-module archiveName="spring-test-4.0.5.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-test/4.0.5.RELEASE/spring-test-4.0.5.RELEASE.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="spring-jdbc-4.0.5.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-jdbc/4.0.5.RELEASE/spring-jdbc-4.0.5.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-tx-4.0.5.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-tx/4.0.5.RELEASE/spring-tx-4.0.5.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <dependent-module archiveName="logback-classic-1.0.13.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
