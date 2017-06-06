@@ -24,5 +24,13 @@ public class UserDaoTest {
 		User user = userDao.findById("javajigi");
 		log.debug("User : {}", user);
 	}
+	
+	@Test
+	public void create() throws Exception {
+		User user = new User("sanjigi", "password", "»êÁö±â", "sanjigi@gmail.com");
+		userDao.create(user);
+		User dbUser = userDao.findById(user.getUserId());
+		
+	}
 
 }
