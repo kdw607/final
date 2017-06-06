@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -18,12 +19,12 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
-	@RequestMapping("/users/form")
+	@RequestMapping("/form")
 	public String form(){
 		return "users/form";
 	}
 	
-	@RequestMapping(value="/users", method=RequestMethod.POST)
+	@RequestMapping(value="", method=RequestMethod.POST)
 	public String create(User user){
 		log.debug("User : {}", user);
 		userDao.create(user);
