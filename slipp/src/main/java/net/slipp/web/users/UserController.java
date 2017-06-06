@@ -14,9 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/users")
 public class UserController {
 
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	
 	@RequestMapping("/form")
 	public String form(){
 		return "users/form";
 	}
 
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public String create(User user){
+		log.debug("User : {}", user);
+		return "users/form";
+	}
 }
