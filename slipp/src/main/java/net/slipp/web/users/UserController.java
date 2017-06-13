@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import net.slipp.dao.users.UserDao;
+import net.slipp.domain.users.Authenticate;
 import net.slipp.domain.users.User;
 
 import org.slf4j.Logger;
@@ -25,7 +26,6 @@ public class UserController {
 	private static final Logger log = LoggerFactory
 			.getLogger(UserController.class);
 
-	@Autowired
 	private UserDao userDao;
 
 	@RequestMapping("/form")
@@ -51,4 +51,11 @@ public class UserController {
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/login/form")
+	public String loginform(Model model) {
+		model.addAttribute("authenticate", new Authenticate());
+		return "users/login";
+	}
+	
 }

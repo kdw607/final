@@ -16,7 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 
-@RunWith(MockitoJUnitRunner.class)8
+@RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 	
 	@Mock
