@@ -3,6 +3,7 @@ package net.slipp.web;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -14,6 +15,7 @@ public class HomeControllerTest {
 	public void home() throws Exception {
 		standaloneSetup(new HomeController()).build()
 		.perform(get("/"))
-		.andExpect(status().isOk());
+		.andExpect(status().isOk())
+		.andExpect(forwardedUrl("/"));
 	}
 }

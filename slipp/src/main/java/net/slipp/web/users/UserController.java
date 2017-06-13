@@ -25,6 +25,7 @@ public class UserController {
 	private static final Logger log = LoggerFactory
 			.getLogger(UserController.class);
 
+	@Autowired
 	private UserDao userDao;
 
 	@RequestMapping("/form")
@@ -48,6 +49,6 @@ public class UserController {
 
 		userDao.create(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
-		return "users/form";
+		return "redirect:/";
 	}
 }
