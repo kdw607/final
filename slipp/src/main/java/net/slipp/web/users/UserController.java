@@ -58,4 +58,24 @@ public class UserController {
 		return "users/login";
 	}
 	
+	@RequestMapping(value = "/login")
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "users/login";
+		}
+		
+		User user = userDao.findById(authenticate.getUserId());
+		
+		if(user == null){
+			log.debug("존재하지 않는 사용자입니다.");
+		}
+		if (!user.getPassword().equals(authenticate.getPassword())) {
+			log.debug("비밀번호가 다릅니다.");
+		}
+		
+		//세션에 사용자 정보 저장
+		
+		return "users/login";
+	}
+	
 }

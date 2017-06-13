@@ -23,12 +23,14 @@
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
 							<form:input path="userId" />
+							<form:errors path="userId" cssClas="error"/>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
 							<form:password path="password" />
+							<form:errors path="password" cssClas="error"/>
 						</div>
 					</div>
 					<div class="control-group">
