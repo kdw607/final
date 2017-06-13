@@ -52,7 +52,7 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/login/form")
+	@RequestMapping(value = "/login/form")
 	public String loginform(Model model) {
 		model.addAttribute("authenticate", new Authenticate());
 		return "users/login";

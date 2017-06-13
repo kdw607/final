@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,26 +18,26 @@
 				<div class="page-header">
 					<h1>로그인</h1>
 				</div>
-				
-				<form class="form-horizontal" action="/users/login" method="post">
-					<div class="control-group">
+				<form:form modelAttribute="authenticate" cssClass="form-horizontal" action="/users/login" method="get">
+						<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
-							<input type="text" name="userId" value="" placeholder=""/>
+							<form:input path="userId" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
-							<input type="password" id="password" name="password" placeholder="">
+							<form:password path="password" />
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							<button type="submit" class="btn btn-primary">로그인</button>
 						</div>
-					</div>
-				</form>
+					</div>			
+				</form:form>
+				</section>
 			</div>
 		</div>
 	</div>
