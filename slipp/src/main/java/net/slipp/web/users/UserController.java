@@ -2,6 +2,7 @@ package net.slipp.web.users;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import net.slipp.dao.users.UserDao;
@@ -60,7 +61,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@Valid Authenticate authenticate, BindingResult bindingResult, Model model) {
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult, HttpSession session, Model model) {
 		if (bindingResult.hasErrors()) {
 			return "users/login";
 		}
@@ -71,14 +72,15 @@ public class UserController {
 			model.addAttribute("errorMessage", "존재하지 않는 사용자입니다.");
 			return "users/login";
 		}
-		if (!user.getPassword().equals(authenticate)) {
+		if (!user.matchPassword(authenticate)) {
 			model.addAttribute("errorMessage", "비밀번호가 틀립니다.");
 			return "users/login";
 		}
 		
 		//세션에 사용자 정보 저장
+		session.setAttribute("user", user.getUserId());
 		
-		return "users/login";
+		return "redirect:/";
 	}
 	
 }
