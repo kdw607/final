@@ -26,6 +26,7 @@ public class UserController {
 	private static final Logger log = LoggerFactory
 			.getLogger(UserController.class);
 
+	@Autowired
 	private UserDao userDao;
 
 	@RequestMapping("/form")
@@ -58,8 +59,8 @@ public class UserController {
 		return "users/login";
 	}
 	
-	@RequestMapping(value = "/login")
-	public String login(@Valid Authenticate authenticate, BindingResult bindingResult) {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			return "users/login";
 		}
@@ -67,10 +68,12 @@ public class UserController {
 		User user = userDao.findById(authenticate.getUserId());
 		
 		if(user == null){
-			log.debug("존재하지 않는 사용자입니다.");
+			model.addAttribute("errorMessage", "존재하지 않는 사용자입니다.");
+			return "users/login";
 		}
-		if (!user.getPassword().equals(authenticate.getPassword())) {
-			log.debug("비밀번호가 다릅니다.");
+		if (!user.getPassword().equals(authenticate)) {
+			model.addAttribute("errorMessage", "비밀번호가 틀립니다.");
+			return "users/login";
 		}
 		
 		//세션에 사용자 정보 저장

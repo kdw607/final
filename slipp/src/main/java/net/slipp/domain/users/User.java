@@ -105,6 +105,14 @@ public class User {
 		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
+	}
+
+	public boolean matchPassword(Authenticate authenticate) {
+		if(this.password == null){
+			return false;
+		}
+		//return this.password.equals(authenticate.getPassword());
+		return authenticate.matchPassword(this.password);
 	} 
 
 	

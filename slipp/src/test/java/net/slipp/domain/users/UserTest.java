@@ -1,4 +1,4 @@
-package net.slipp.dao.users;
+package net.slipp.domain.users;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -44,5 +44,16 @@ public class UserTest {
 	    	log.debug("violation error message : {}", constraintViolation.getMessage());
 			
 		}
+	}
+	@Test
+	public void matchPassword() throws Exception{
+		String password = "password";
+		Authenticate authenticate = new Authenticate("userId", "password");
+		User user = new User("userId", "password", "name", "email@gmail.net");
+	
+		assertTrue(user.matchPassword(authenticate));
+		
+		authenticate = new Authenticate("userId", "password2");
+		assertFalse(user.matchPassword(authenticate));
 	}
 }

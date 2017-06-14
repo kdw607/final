@@ -14,6 +14,12 @@ public class Authenticate {
 	public Authenticate() {
 	}
 	
+	public Authenticate(String userId, String password) {
+		super();
+		this.userId = userId;
+		this.password = password;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -28,6 +34,10 @@ public class Authenticate {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean matchPassword(String password) {
+		return this.password.equals(password);
 	}
 	
 	
