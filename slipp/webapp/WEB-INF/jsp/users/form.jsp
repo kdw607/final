@@ -17,41 +17,65 @@
 			<div class="span12">
 				<section id="typography">
 				<div class="page-header">
-					<h1>회원가입</h1>
+					<c:choose>
+						<c:when test="${empty user.userId}">
+							<c:set var="method" value="post"/>
+						</c:when>
+						<c:otherwise>
+							<c:set var="method" value="put" />
+						</c:otherwise>
+					</c:choose>
 				</div>
 
-				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="post">
+				<form:form modelAttribute="user" cssClass="form-horizontal"
+					action="/users" method="${method}">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
-							<form:input path="userId"/>
-							<form:errors path="userId" cssClas="error"/>
+							<c:choose>
+								<c:when test="${empty user.userId}">
+									<form:input path="userId" />
+									<form:errors path="userId" cssClas="error" />
+								</c:when>
+								<c:otherwise>
+							${user.userId}
+							<form:hidden path="userId" />
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
-							<form:password path="password"/>
-							<form:errors path="password" cssClas="error"/>
+							<form:password path="password" />
+							<form:errors path="password" cssClas="error" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="name">이름</label>
 						<div class="controls">
-							<form:input path="name"/>
-							<form:errors path="name" cssClas="error"/>
+							<form:input path="name" />
+							<form:errors path="name" cssClas="error" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="email">이메일</label>
 						<div class="controls">
-							<form:input path="email"/>
-							<form:errors path="email" cssClas="error"/>
+							<form:input path="email" />
+							<form:errors path="email" cssClas="error" />
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<button type="submit" class="btn btn-primary">회원가입</button>
+							<c:choose>
+								<c:when test="${empty user.userId}">
+									<button type="submit" class="btn btn-primary">회원가입</button>
+								</c:when>
+								<c:otherwise>
+									<button type="submit" class="btn btn-primary">확인</button>
+								</c:otherwise>
+							</c:choose>
+
 						</div>
 					</div>
 				</form:form> </section>
