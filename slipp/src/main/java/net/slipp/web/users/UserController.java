@@ -78,7 +78,7 @@ public class UserController {
 		}
 		
 		//세션에 사용자 정보 저장
-		session.setAttribute("user", user.getUserId());
+		session.setAttribute("userId", user.getUserId());
 		
 		return "redirect:/";
 	}
