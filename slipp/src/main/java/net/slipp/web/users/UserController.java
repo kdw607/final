@@ -120,11 +120,12 @@ public class UserController {
 		if(temp == null){
 			throw new NullPointerException();
 		}
+		
+		/*//리펙토링 한 부분
 		String userId = (String)temp;
-
 		if(!user.matchUserId(userId)){
 			throw new NullPointerException();
-		}
+		}*/
 		
 		userDao.modify(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
