@@ -3,7 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserMapper">
-  <select id="findById" resultType="net.slipp.domain.users.User">
-    select * from users where userId = #{userId}
-  </select>
+	<select id="findById" resultType="net.slipp.domain.users.User">
+		select * from users where userId = #{userId}
+	</select>
+  
+	<insert id="create">
+	  insert into users
+	  	values (#{userId}, #{password}, #{name}, #{email})
+	</insert>
+	
+	<update id="modify">
+	  update users
+	  set
+	    password = #{password},
+	    name = #{name},
+	    email = #{email},
+	  where userId = #{userId}
+	</update>
+	
+	<delete id="delete">
+	  delete from users where userId = #{userId}
+	</delete>  
+  
+  
+  
+  
 </mapper>
