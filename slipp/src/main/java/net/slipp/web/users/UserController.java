@@ -104,7 +104,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public String modify(@Valid User user, BindingResult bindingResult) {
+	public String modify(@Valid User user, BindingResult bindingResult, HttpSession session) {
 
 		log.debug("User : {}", user);
 		if (bindingResult.hasErrors()) {
@@ -115,7 +115,17 @@ public class UserController {
 			}
 			return "users/form";
 		}
+		
+		Object temp = session.getAttribute("userId");
+		if(temp == null){
+			throw new NullPointerException();
+		}
+		String userId = (String)temp;
 
+		if(!user.matchUserId(userId)){
+			throw new NullPointerException();
+		}
+		
 		userDao.modify(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";

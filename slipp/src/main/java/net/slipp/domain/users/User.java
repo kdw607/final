@@ -113,6 +113,14 @@ public class User {
 		}
 		//return this.password.equals(authenticate.getPassword());
 		return authenticate.matchPassword(this.password);
+	}
+
+	public boolean matchUserId(String inputUserId) {
+		if(inputUserId == null){
+			return false;
+		}
+		
+		return inputUserId.equals(this.userId);
 	} 
 
 	
