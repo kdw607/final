@@ -1,5 +1,6 @@
-package net.slipp.dao.users;
+package net.slipp.bark;
 
+import net.slipp.dao.users.UserDao;
 import net.slipp.domain.users.User;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;

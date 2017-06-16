@@ -20,9 +20,11 @@
 					<c:choose>
 						<c:when test="${empty user.userId}">
 							<c:set var="method" value="post"/>
+							<h1>회원가입</h1>
 						</c:when>
 						<c:otherwise>
 							<c:set var="method" value="put" />
+							<h1>개인정보수정</h1>
 						</c:otherwise>
 					</c:choose>
 				</div>

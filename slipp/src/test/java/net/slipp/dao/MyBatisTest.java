@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import javax.websocket.RemoteEndpoint.Basic;
 
 import static org.hamcrest.CoreMatchers.*;
-import net.slipp.dao.users.UserDaoTest;
+import net.slipp.bark.UserDaoTest;
 import net.slipp.domain.users.User;
 
 import org.apache.commons.dbcp.BasicDataSource;

@@ -4,11 +4,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import org.apache.ibatis.type.Alias;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.sun.istack.internal.NotNull;
 
+@Alias("user")
 public class User {
 	
 	@NotEmpty @Size(min=4, max=12)

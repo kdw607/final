@@ -14,7 +14,7 @@ import net.slipp.domain.users.User;
 
 public class MyBatisUserDao implements UserDao {
 
-	private static final Logger log = LoggerFactory.getLogger(UserDaoTest.class);
+	private static final Logger log = LoggerFactory.getLogger(MyBatisUserDao.class);
 	
 	private SqlSession sqlSession;
 	

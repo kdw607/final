@@ -1,10 +1,11 @@
-package net.slipp.dao.users;
+package net.slipp.bark;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.annotation.PostConstruct;
 
+import net.slipp.dao.users.UserDao;
 import net.slipp.domain.users.User;
 
 import org.slf4j.Logger;
