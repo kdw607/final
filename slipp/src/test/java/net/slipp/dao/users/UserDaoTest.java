@@ -1,4 +1,4 @@
-package net.slipp.bark;
+package net.slipp.dao.users;
 
 import net.slipp.dao.users.UserDao;
 import net.slipp.domain.users.User;
@@ -12,10 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/applicationContext.xml")
+@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 public class UserDaoTest {
 	
 	private static final Logger log = LoggerFactory.getLogger(UserDaoTest.class);
@@ -29,8 +32,9 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	@Transactional
 	public void create() throws Exception {
-		User user = new User("sanjigi", "password", "산지기", "sanjigi@gmail.com");
+		User user = new User("sanjiginim", "password", "산지기", "sanjigi@gmail.com");
 		userDao.create(user);
 		User dbUser = userDao.findById(user.getUserId());
 		assertThat(dbUser, is(user));
